@@ -1,0 +1,29 @@
+1. 模型多樣化與比較
+以前可能只跑了 DecisionTreeRegressor，現在可以多加以下模型：
+
+Ensemble Models：RandomForest、GradientBoosting（GBDT/XGBoost/LightGBM）
+
+Linear Models：Ridge、Lasso、ElasticNet（順便談正則化）
+
+深度學習：用 Keras/TensorFlow 的 MLPRegressor 或 PyTorch
+
+AutoML：AutoSklearn, TPOT, 或 H2O AutoML 自動尋找最佳模型
+
+2. 資料科學流程完善
+數據探索與視覺化（EDA）：用 seaborn、matplotlib 做熱力圖、pairplot、分佈圖，找出特徵與目標變數的關係。
+
+資料前處理：缺失值處理、標準化（StandardScaler）、特徵工程（PCA、特徵選擇）。
+
+評估指標：不只用 MSE/RMSE，可以加上 MAE、R^2、甚至 residual plot。
+
+交叉驗證：用 cross_val_score 或 GridSearchCV 自動搜尋最佳參數。
+
+3. 現代化工具
+Shap values / Explainable AI：解釋模型預測，展示特徵貢獻（用 shap 套件）。
+
+Pipeline：用 sklearn.pipeline.Pipeline 串起前處理、模型、預測，讓整個流程模組化。
+
+Jupyter Notebook 視覺化提升：多用 plotly, seaborn，加入 interactivity。
+
+新資料集替換：因為 boston 已被棄用（有種族爭議），推薦換成 fetch_california_housing 或 Kaggle 的房價資料。
+
