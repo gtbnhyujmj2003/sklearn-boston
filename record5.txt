@@ -1,0 +1,34 @@
+2️⃣ Java/C# 類比模板（筆試/報告/履歷用）
+雖然 Java/C# 沒有像 Python 這麼多 Tabular ML 直接包裝，但你可以用如下方式寫進履歷/報告或當伪代码：
+
+Java
+推薦工具：Smile、Weka（GUI/Java）、[XGBoost4J]
+
+java
+複製
+編輯
+// Java: 使用 Weka 做資料分割與建模（範例）
+import weka.classifiers.trees.RandomForest;
+import weka.core.Instances;
+import weka.core.converters.ConverterUtils.DataSource;
+
+// 1. 載入資料
+DataSource source = new DataSource("boston.arff");
+Instances data = source.getDataSet();
+data.setClassIndex(data.numAttributes() - 1);
+
+// 2. 分割訓練/測試
+int trainSize = (int) Math.round(data.numInstances() * 0.8);
+int testSize = data.numInstances() - trainSize;
+Instances train = new Instances(data, 0, trainSize);
+Instances test = new Instances(data, trainSize, testSize);
+
+// 3. 建模
+RandomForest rf = new RandomForest();
+rf.buildClassifier(train);
+
+// 4. 評估
+for (int i = 0; i < test.numInstances(); i++) {
+    double pred = rf.classifyInstance(test.instance(i));
+    // 可以算 RMSE、MAE
+}
