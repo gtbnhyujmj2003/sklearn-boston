@@ -1,0 +1,11 @@
+🚀【Boston 房價預測｜現代 Python + AutoML TPOT 範本】
+（直接 Colab 可執行，含註解）
+
+📒【說明】
+HistGradientBoostingRegressor：是 sklearn 現代回歸首選（速度快、表現強）。
+
+TPOTRegressor：自動尋找（包含調參/特徵處理）最佳 sklearn pipeline，不只測模型還幫你挑超參數。
+
+pipeline 輸出：你可以直接把 tpot 產生的 pipeline py 檔拿去「純 sklearn」複製重用。
+
+結果對照：兩種分數直接比，誰強一目了然。
