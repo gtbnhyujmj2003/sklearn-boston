@@ -1,0 +1,37 @@
+C#
+推薦工具：ML.NET
+
+csharp
+複製
+編輯
+// C#: 用 ML.NET 執行 tabular regression (房價)
+using Microsoft.ML;
+using Microsoft.ML.Data;
+
+// 1. 定義資料模型
+public class BostonData { public float RM, LSTAT, ...; public float Label; }
+
+// 2. 讀資料
+var context = new MLContext();
+IDataView data = context.Data.LoadFromTextFile<BostonData>("boston.csv", hasHeader:true, separatorChar:',');
+
+// 3. 分割訓練/測試
+var split = context.Data.TrainTestSplit(data, testFraction: 0.2);
+
+// 4. 設計 pipeline
+var pipeline = context.Transforms.Concatenate("Features", ...) // feature columns
+    .Append(context.Regression.Trainers.FastTree());
+
+// 5. 訓練模型
+var model = pipeline.Fit(split.TrainSet);
+
+// 6. 評估
+var predictions = model.Transform(split.TestSet);
+var metrics = context.Regression.Evaluate(predictions);
+Console.WriteLine($"RMSE: {metrics.RootMeanSquaredError}");
+補充說明
+Java/C# 比較適合展示「你多元語言能力、架構設計、部署」。
+
+Python 可以用來做「資料分析/特徵工程/AutoML/解釋」。
+
+履歷/報告可以雙管齊下：「Python 主要分析、Java/C# 補充說明（含代碼）」。
